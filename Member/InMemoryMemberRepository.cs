@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace gym_app.Member
 {
-
+    // este lo hice para probar sin tener base de datos
     internal class InMemoryMemberRepository : IMemberRepository
     {
         private readonly List<Member> _members = new();
