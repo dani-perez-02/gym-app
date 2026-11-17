@@ -1,1 +1,13 @@
-.vs
+bin/
+obj/
+artifacts/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
