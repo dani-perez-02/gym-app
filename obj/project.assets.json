@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Laboratorio_FE\\source\\repos\\gym-app\\gym-app\\gym-app.csproj",
+      "projectUniqueName": "C:\\Users\\Laboratorio_FE\\Downloads\\gym-app\\gym-app.csproj",
       "projectName": "gym-app",
-      "projectPath": "C:\\Users\\Laboratorio_FE\\source\\repos\\gym-app\\gym-app\\gym-app.csproj",
+      "projectPath": "C:\\Users\\Laboratorio_FE\\Downloads\\gym-app\\gym-app.csproj",
       "packagesPath": "C:\\Users\\Laboratorio_FE\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Laboratorio_FE\\source\\repos\\gym-app\\gym-app\\obj\\",
+      "outputPath": "C:\\Users\\Laboratorio_FE\\Downloads\\gym-app\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Laboratorio_FE\\AppData\\Roaming\\NuGet\\NuGet.Config",

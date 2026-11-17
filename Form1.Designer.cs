@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             panelSidebar = new Panel();
+            btnNavPayments = new Button();
+            btnNavAttendance = new Button();
+            btnNavSubcriptions = new Button();
+            btnNavPlans = new Button();
+            btnNavMembers = new Button();
             panelLogo = new Panel();
             label1 = new Label();
             panelHeader = new Panel();
             lblHeader = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            panelContent = new Panel();
+            btnNavStats = new Button();
             panelSidebar.SuspendLayout();
             panelLogo.SuspendLayout();
             panelHeader.SuspendLayout();
@@ -46,17 +48,98 @@
             // panelSidebar
             // 
             panelSidebar.BackColor = Color.FromArgb(12, 31, 61);
-            panelSidebar.Controls.Add(button5);
-            panelSidebar.Controls.Add(button4);
-            panelSidebar.Controls.Add(button3);
-            panelSidebar.Controls.Add(button2);
-            panelSidebar.Controls.Add(button1);
+            panelSidebar.Controls.Add(btnNavStats);
+            panelSidebar.Controls.Add(btnNavPayments);
+            panelSidebar.Controls.Add(btnNavAttendance);
+            panelSidebar.Controls.Add(btnNavSubcriptions);
+            panelSidebar.Controls.Add(btnNavPlans);
+            panelSidebar.Controls.Add(btnNavMembers);
             panelSidebar.Controls.Add(panelLogo);
             panelSidebar.Dock = DockStyle.Left;
             panelSidebar.Location = new Point(0, 0);
             panelSidebar.Name = "panelSidebar";
             panelSidebar.Size = new Size(240, 611);
             panelSidebar.TabIndex = 0;
+            // 
+            // btnNavPayments
+            // 
+            btnNavPayments.Dock = DockStyle.Top;
+            btnNavPayments.FlatAppearance.BorderSize = 0;
+            btnNavPayments.FlatStyle = FlatStyle.Flat;
+            btnNavPayments.Font = new Font("Segoe UI", 9.75F);
+            btnNavPayments.ForeColor = SystemColors.ButtonFace;
+            btnNavPayments.Location = new Point(0, 305);
+            btnNavPayments.Name = "btnNavPayments";
+            btnNavPayments.Padding = new Padding(10, 0, 0, 0);
+            btnNavPayments.Size = new Size(240, 55);
+            btnNavPayments.TabIndex = 5;
+            btnNavPayments.Text = "💰  Pagos";
+            btnNavPayments.TextAlign = ContentAlignment.MiddleLeft;
+            btnNavPayments.UseVisualStyleBackColor = true;
+            // 
+            // btnNavAttendance
+            // 
+            btnNavAttendance.Dock = DockStyle.Top;
+            btnNavAttendance.FlatAppearance.BorderSize = 0;
+            btnNavAttendance.FlatStyle = FlatStyle.Flat;
+            btnNavAttendance.Font = new Font("Segoe UI", 9.75F);
+            btnNavAttendance.ForeColor = SystemColors.ButtonFace;
+            btnNavAttendance.Location = new Point(0, 250);
+            btnNavAttendance.Name = "btnNavAttendance";
+            btnNavAttendance.Padding = new Padding(10, 0, 0, 0);
+            btnNavAttendance.Size = new Size(240, 55);
+            btnNavAttendance.TabIndex = 4;
+            btnNavAttendance.Text = "✔️  Asistencia";
+            btnNavAttendance.TextAlign = ContentAlignment.MiddleLeft;
+            btnNavAttendance.UseVisualStyleBackColor = true;
+            // 
+            // btnNavSubcriptions
+            // 
+            btnNavSubcriptions.Dock = DockStyle.Top;
+            btnNavSubcriptions.FlatAppearance.BorderSize = 0;
+            btnNavSubcriptions.FlatStyle = FlatStyle.Flat;
+            btnNavSubcriptions.Font = new Font("Segoe UI", 9.75F);
+            btnNavSubcriptions.ForeColor = SystemColors.ButtonFace;
+            btnNavSubcriptions.Location = new Point(0, 195);
+            btnNavSubcriptions.Name = "btnNavSubcriptions";
+            btnNavSubcriptions.Padding = new Padding(10, 0, 0, 0);
+            btnNavSubcriptions.Size = new Size(240, 55);
+            btnNavSubcriptions.TabIndex = 3;
+            btnNavSubcriptions.Text = "💳  Suscripciones";
+            btnNavSubcriptions.TextAlign = ContentAlignment.MiddleLeft;
+            btnNavSubcriptions.UseVisualStyleBackColor = true;
+            // 
+            // btnNavPlans
+            // 
+            btnNavPlans.Dock = DockStyle.Top;
+            btnNavPlans.FlatAppearance.BorderSize = 0;
+            btnNavPlans.FlatStyle = FlatStyle.Flat;
+            btnNavPlans.Font = new Font("Segoe UI", 9.75F);
+            btnNavPlans.ForeColor = SystemColors.ButtonFace;
+            btnNavPlans.Location = new Point(0, 140);
+            btnNavPlans.Name = "btnNavPlans";
+            btnNavPlans.Padding = new Padding(10, 0, 0, 0);
+            btnNavPlans.Size = new Size(240, 55);
+            btnNavPlans.TabIndex = 2;
+            btnNavPlans.Text = "📋  Planes";
+            btnNavPlans.TextAlign = ContentAlignment.MiddleLeft;
+            btnNavPlans.UseVisualStyleBackColor = true;
+            // 
+            // btnNavMembers
+            // 
+            btnNavMembers.Dock = DockStyle.Top;
+            btnNavMembers.FlatAppearance.BorderSize = 0;
+            btnNavMembers.FlatStyle = FlatStyle.Flat;
+            btnNavMembers.Font = new Font("Segoe UI", 9.75F);
+            btnNavMembers.ForeColor = SystemColors.ButtonFace;
+            btnNavMembers.Location = new Point(0, 85);
+            btnNavMembers.Name = "btnNavMembers";
+            btnNavMembers.Padding = new Padding(10, 0, 0, 0);
+            btnNavMembers.Size = new Size(240, 55);
+            btnNavMembers.TabIndex = 1;
+            btnNavMembers.Text = "👥  Socios";
+            btnNavMembers.TextAlign = ContentAlignment.MiddleLeft;
+            btnNavMembers.UseVisualStyleBackColor = true;
             // 
             // panelLogo
             // 
@@ -91,97 +174,43 @@
             // 
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHeader.Location = new Point(16, 31);
+            lblHeader.Location = new Point(27, 31);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(195, 25);
             lblHeader.TabIndex = 0;
             lblHeader.Text = "Gestión de Gimnasio";
             // 
-            // button1
+            // panelContent
             // 
-            button1.Dock = DockStyle.Top;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 9.75F);
-            button1.ForeColor = SystemColors.ButtonFace;
-            button1.Location = new Point(0, 85);
-            button1.Name = "button1";
-            button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(240, 55);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = true;
+            panelContent.BackColor = SystemColors.ButtonHighlight;
+            panelContent.Dock = DockStyle.Fill;
+            panelContent.Location = new Point(240, 70);
+            panelContent.Name = "panelContent";
+            panelContent.Size = new Size(894, 541);
+            panelContent.TabIndex = 2;
             // 
-            // button2
+            // btnNavStats
             // 
-            button2.Dock = DockStyle.Top;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 9.75F);
-            button2.ForeColor = SystemColors.ButtonFace;
-            button2.Location = new Point(0, 140);
-            button2.Name = "button2";
-            button2.Padding = new Padding(10, 0, 0, 0);
-            button2.Size = new Size(240, 55);
-            button2.TabIndex = 2;
-            button2.Text = "button2";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Dock = DockStyle.Top;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 9.75F);
-            button3.ForeColor = SystemColors.ButtonFace;
-            button3.Location = new Point(0, 195);
-            button3.Name = "button3";
-            button3.Padding = new Padding(10, 0, 0, 0);
-            button3.Size = new Size(240, 55);
-            button3.TabIndex = 3;
-            button3.Text = "button3";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Dock = DockStyle.Top;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 9.75F);
-            button4.ForeColor = SystemColors.ButtonFace;
-            button4.Location = new Point(0, 250);
-            button4.Name = "button4";
-            button4.Padding = new Padding(10, 0, 0, 0);
-            button4.Size = new Size(240, 55);
-            button4.TabIndex = 4;
-            button4.Text = "button4";
-            button4.TextAlign = ContentAlignment.MiddleLeft;
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            button5.Dock = DockStyle.Top;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Segoe UI", 9.75F);
-            button5.ForeColor = SystemColors.ButtonFace;
-            button5.Location = new Point(0, 305);
-            button5.Name = "button5";
-            button5.Padding = new Padding(10, 0, 0, 0);
-            button5.Size = new Size(240, 55);
-            button5.TabIndex = 5;
-            button5.Text = "button5";
-            button5.TextAlign = ContentAlignment.MiddleLeft;
-            button5.UseVisualStyleBackColor = true;
+            btnNavStats.Dock = DockStyle.Top;
+            btnNavStats.FlatAppearance.BorderSize = 0;
+            btnNavStats.FlatStyle = FlatStyle.Flat;
+            btnNavStats.Font = new Font("Segoe UI", 9.75F);
+            btnNavStats.ForeColor = SystemColors.ButtonFace;
+            btnNavStats.Location = new Point(0, 360);
+            btnNavStats.Name = "btnNavStats";
+            btnNavStats.Padding = new Padding(10, 0, 0, 0);
+            btnNavStats.Size = new Size(240, 55);
+            btnNavStats.TabIndex = 6;
+            btnNavStats.Text = "📊  Estadísticas";
+            btnNavStats.TextAlign = ContentAlignment.MiddleLeft;
+            btnNavStats.UseVisualStyleBackColor = true;
             // 
             // GymApp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1134, 611);
+            Controls.Add(panelContent);
             Controls.Add(panelHeader);
             Controls.Add(panelSidebar);
             MinimumSize = new Size(950, 550);
@@ -202,10 +231,12 @@
         private Label label1;
         private Panel panelHeader;
         private Label lblHeader;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button btnNavPayments;
+        private Button btnNavAttendance;
+        private Button btnNavSubcriptions;
+        private Button btnNavPlans;
+        private Button btnNavMembers;
+        private Panel panelContent;
+        private Button btnNavStats;
     }
 }
