@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelSidebar = new Panel();
+            btnNavStats = new Button();
             btnNavPayments = new Button();
             btnNavAttendance = new Button();
             btnNavSubcriptions = new Button();
@@ -39,7 +40,6 @@
             panelHeader = new Panel();
             lblHeader = new Label();
             panelContent = new Panel();
-            btnNavStats = new Button();
             panelSidebar.SuspendLayout();
             panelLogo.SuspendLayout();
             panelHeader.SuspendLayout();
@@ -61,13 +61,31 @@
             panelSidebar.Size = new Size(240, 611);
             panelSidebar.TabIndex = 0;
             // 
+            // btnNavStats
+            // 
+            btnNavStats.Cursor = Cursors.Hand;
+            btnNavStats.Dock = DockStyle.Top;
+            btnNavStats.FlatAppearance.BorderSize = 0;
+            btnNavStats.FlatStyle = FlatStyle.Flat;
+            btnNavStats.Font = new Font("Segoe UI", 9.75F);
+            btnNavStats.ForeColor = Color.Silver;
+            btnNavStats.Location = new Point(0, 360);
+            btnNavStats.Name = "btnNavStats";
+            btnNavStats.Padding = new Padding(10, 0, 0, 0);
+            btnNavStats.Size = new Size(240, 55);
+            btnNavStats.TabIndex = 6;
+            btnNavStats.Text = "📊  Estadísticas";
+            btnNavStats.TextAlign = ContentAlignment.MiddleLeft;
+            btnNavStats.UseVisualStyleBackColor = true;
+            // 
             // btnNavPayments
             // 
+            btnNavPayments.Cursor = Cursors.Hand;
             btnNavPayments.Dock = DockStyle.Top;
             btnNavPayments.FlatAppearance.BorderSize = 0;
             btnNavPayments.FlatStyle = FlatStyle.Flat;
             btnNavPayments.Font = new Font("Segoe UI", 9.75F);
-            btnNavPayments.ForeColor = SystemColors.ButtonFace;
+            btnNavPayments.ForeColor = Color.Silver;
             btnNavPayments.Location = new Point(0, 305);
             btnNavPayments.Name = "btnNavPayments";
             btnNavPayments.Padding = new Padding(10, 0, 0, 0);
@@ -79,11 +97,12 @@
             // 
             // btnNavAttendance
             // 
+            btnNavAttendance.Cursor = Cursors.Hand;
             btnNavAttendance.Dock = DockStyle.Top;
             btnNavAttendance.FlatAppearance.BorderSize = 0;
             btnNavAttendance.FlatStyle = FlatStyle.Flat;
             btnNavAttendance.Font = new Font("Segoe UI", 9.75F);
-            btnNavAttendance.ForeColor = SystemColors.ButtonFace;
+            btnNavAttendance.ForeColor = Color.Silver;
             btnNavAttendance.Location = new Point(0, 250);
             btnNavAttendance.Name = "btnNavAttendance";
             btnNavAttendance.Padding = new Padding(10, 0, 0, 0);
@@ -95,11 +114,12 @@
             // 
             // btnNavSubcriptions
             // 
+            btnNavSubcriptions.Cursor = Cursors.Hand;
             btnNavSubcriptions.Dock = DockStyle.Top;
             btnNavSubcriptions.FlatAppearance.BorderSize = 0;
             btnNavSubcriptions.FlatStyle = FlatStyle.Flat;
             btnNavSubcriptions.Font = new Font("Segoe UI", 9.75F);
-            btnNavSubcriptions.ForeColor = SystemColors.ButtonFace;
+            btnNavSubcriptions.ForeColor = Color.Silver;
             btnNavSubcriptions.Location = new Point(0, 195);
             btnNavSubcriptions.Name = "btnNavSubcriptions";
             btnNavSubcriptions.Padding = new Padding(10, 0, 0, 0);
@@ -111,11 +131,12 @@
             // 
             // btnNavPlans
             // 
+            btnNavPlans.Cursor = Cursors.Hand;
             btnNavPlans.Dock = DockStyle.Top;
             btnNavPlans.FlatAppearance.BorderSize = 0;
             btnNavPlans.FlatStyle = FlatStyle.Flat;
             btnNavPlans.Font = new Font("Segoe UI", 9.75F);
-            btnNavPlans.ForeColor = SystemColors.ButtonFace;
+            btnNavPlans.ForeColor = Color.Silver;
             btnNavPlans.Location = new Point(0, 140);
             btnNavPlans.Name = "btnNavPlans";
             btnNavPlans.Padding = new Padding(10, 0, 0, 0);
@@ -127,11 +148,12 @@
             // 
             // btnNavMembers
             // 
+            btnNavMembers.Cursor = Cursors.Hand;
             btnNavMembers.Dock = DockStyle.Top;
             btnNavMembers.FlatAppearance.BorderSize = 0;
             btnNavMembers.FlatStyle = FlatStyle.Flat;
             btnNavMembers.Font = new Font("Segoe UI", 9.75F);
-            btnNavMembers.ForeColor = SystemColors.ButtonFace;
+            btnNavMembers.ForeColor = Color.Silver;
             btnNavMembers.Location = new Point(0, 85);
             btnNavMembers.Name = "btnNavMembers";
             btnNavMembers.Padding = new Padding(10, 0, 0, 0);
@@ -188,22 +210,6 @@
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(894, 541);
             panelContent.TabIndex = 2;
-            // 
-            // btnNavStats
-            // 
-            btnNavStats.Dock = DockStyle.Top;
-            btnNavStats.FlatAppearance.BorderSize = 0;
-            btnNavStats.FlatStyle = FlatStyle.Flat;
-            btnNavStats.Font = new Font("Segoe UI", 9.75F);
-            btnNavStats.ForeColor = SystemColors.ButtonFace;
-            btnNavStats.Location = new Point(0, 360);
-            btnNavStats.Name = "btnNavStats";
-            btnNavStats.Padding = new Padding(10, 0, 0, 0);
-            btnNavStats.Size = new Size(240, 55);
-            btnNavStats.TabIndex = 6;
-            btnNavStats.Text = "📊  Estadísticas";
-            btnNavStats.TextAlign = ContentAlignment.MiddleLeft;
-            btnNavStats.UseVisualStyleBackColor = true;
             // 
             // GymApp
             // 
