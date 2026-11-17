@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GymApp));
             panelSidebar = new Panel();
             btnNavStats = new Button();
             btnNavPayments = new Button();
@@ -36,12 +37,13 @@
             btnNavPlans = new Button();
             btnNavMembers = new Button();
             panelLogo = new Panel();
-            label1 = new Label();
+            picLogo = new PictureBox();
             panelHeader = new Panel();
             lblHeader = new Label();
             panelContent = new Panel();
             panelSidebar.SuspendLayout();
             panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             panelHeader.SuspendLayout();
             SuspendLayout();
             // 
@@ -177,23 +179,25 @@
             // 
             // panelLogo
             // 
-            panelLogo.Controls.Add(label1);
+            panelLogo.Controls.Add(picLogo);
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
             panelLogo.Size = new Size(240, 85);
             panelLogo.TabIndex = 0;
             // 
-            // label1
+            // picLogo
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(102, 112, 133);
-            label1.Location = new Point(65, 31);
-            label1.Name = "label1";
-            label1.Size = new Size(105, 30);
-            label1.TabIndex = 0;
-            label1.Text = "Gym APP";
+            picLogo.BackColor = Color.Transparent;
+            picLogo.Dock = DockStyle.Fill;
+            picLogo.Image = Properties.Resources.logo;
+            picLogo.Location = new Point(0, 0);
+            picLogo.Name = "picLogo";
+            picLogo.Padding = new Padding(16, 12, 16, 12);
+            picLogo.Size = new Size(240, 85);
+            picLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            picLogo.TabIndex = 1;
+            picLogo.TabStop = false;
             // 
             // panelHeader
             // 
@@ -233,12 +237,13 @@
             Controls.Add(panelContent);
             Controls.Add(panelHeader);
             Controls.Add(panelSidebar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(950, 550);
             Name = "GymApp";
-            Text = "GymApp";
+            Text = "GymsharkADM";
             panelSidebar.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
-            panelLogo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
             ResumeLayout(false);
@@ -248,7 +253,6 @@
 
         private Panel panelSidebar;
         private Panel panelLogo;
-        private Label label1;
         private Panel panelHeader;
         private Label lblHeader;
         private Button btnNavPayments;
@@ -258,5 +262,6 @@
         private Button btnNavMembers;
         private Panel panelContent;
         private Button btnNavStats;
+        private PictureBox picLogo;
     }
 }
