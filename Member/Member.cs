@@ -8,14 +8,14 @@ namespace gym_app.Member
 {
     internal class Member
     {
-        private int MemberId { get; set; }
-        private string Name { get; set; }
+        public int MemberId { get; set; }
+        public string Name { get; set; }
 
-        private string Rut {  get; set; }
+        public string Rut {  get; set; }
 
-        private string Email {  get; set; }
-        private string Phone {  get; set; }
-        private bool IsActive { get; set; }
-        private DateTime RegisteredAt { get; set; }
+        public string Email {  get; set; }
+        public string Phone {  get; set; }
+        public bool IsActive { get; set; }
+        public DateTime RegisteredAt { get; set; }
     }
 }

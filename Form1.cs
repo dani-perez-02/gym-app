@@ -2,6 +2,7 @@
 
 
 using System.Drawing;
+using gym_app.Member;
 
 namespace gym_app
 {
@@ -14,8 +15,8 @@ namespace gym_app
         private Button _activeButton; // el boton seleccionado en la navegacion
 
         // constantes para el color de los botones segun estado
-        private readonly Color ColorSidebarActive = Color.FromArgb(12, 31, 21);
-        private readonly Color ColorSidebarNormal = Color.FromArgb(12, 31, 61);
+        private readonly Color ColorSidebarActive = ColorTranslator.FromHtml("#2A3038");
+        private readonly Color ColorSidebarNormal = ColorTranslator.FromHtml("#1C2026");
         private readonly Color ColorTxtActive = Color.White;
         private readonly Color ColorTxtNormal = Color.Silver;
 
@@ -62,17 +63,24 @@ namespace gym_app
             }
             _activeForm = childForm; 
             lblHeader.Text = moduleTitle;
-            _activeForm.TopLevel = false;
-            _activeForm.FormBorderStyle = FormBorderStyle.None; 
-            panelContent.Controls.Add(_activeForm);
+
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+
+            panelContent.Controls.Add(childForm);
+            childForm.Show();
         }
 
         private void OpenMembersPanel(Button btnNavMembers)
         {
             HighlightActiveButton(btnNavMembers);
 
-            var view = new Form(); // cambiar esto cuando tengamos la wea
-            LoadFormInPanel(view, "Gestión de Socios");
+            var repo = new InMemoryMemberRepository();
+            var view = new FrmMembers();
+            _ = new MemberPresenter(repo, view);
+
+            LoadFormInPanel(view, "Gestion de Socios");
 
         }
 
@@ -81,7 +89,7 @@ namespace gym_app
             HighlightActiveButton(btnNavSubcriptions);
 
             var view = new Form(); 
-            LoadFormInPanel(view, "Gestión de Suscripciones");
+            LoadFormInPanel(view, "Gestion de Suscripciones");
         }
 
         private void OpenPlansPanel(Button btnNavPlans)
@@ -89,14 +97,14 @@ namespace gym_app
             HighlightActiveButton(btnNavPlans);
 
             var view = new Form();
-            LoadFormInPanel(view, "Gestión de Planes");
+            LoadFormInPanel(view, "Gestion de Planes");
         }
         private void OpenAttendancePanel(Button btnNavAttendance)
         {
             HighlightActiveButton(btnNavAttendance);
             
             var view = new Form();
-            LoadFormInPanel(view, "Gestión de Asistencia")
+            LoadFormInPanel(view, "Gestion de Asistencia");
         }
     }
 }

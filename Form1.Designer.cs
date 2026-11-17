@@ -47,7 +47,7 @@
             // 
             // panelSidebar
             // 
-            panelSidebar.BackColor = Color.FromArgb(12, 31, 61);
+            panelSidebar.BackColor = Color.FromArgb(28, 32, 38);
             panelSidebar.Controls.Add(btnNavStats);
             panelSidebar.Controls.Add(btnNavPayments);
             panelSidebar.Controls.Add(btnNavAttendance);
@@ -66,6 +66,8 @@
             btnNavStats.Cursor = Cursors.Hand;
             btnNavStats.Dock = DockStyle.Top;
             btnNavStats.FlatAppearance.BorderSize = 0;
+            btnNavStats.FlatAppearance.MouseDownBackColor = Color.FromArgb(42, 48, 56);
+            btnNavStats.FlatAppearance.MouseOverBackColor = Color.FromArgb(42, 48, 56);
             btnNavStats.FlatStyle = FlatStyle.Flat;
             btnNavStats.Font = new Font("Segoe UI", 9.75F);
             btnNavStats.ForeColor = Color.Silver;
@@ -83,6 +85,8 @@
             btnNavPayments.Cursor = Cursors.Hand;
             btnNavPayments.Dock = DockStyle.Top;
             btnNavPayments.FlatAppearance.BorderSize = 0;
+            btnNavPayments.FlatAppearance.MouseDownBackColor = Color.FromArgb(42, 48, 56);
+            btnNavPayments.FlatAppearance.MouseOverBackColor = Color.FromArgb(42, 48, 56);
             btnNavPayments.FlatStyle = FlatStyle.Flat;
             btnNavPayments.Font = new Font("Segoe UI", 9.75F);
             btnNavPayments.ForeColor = Color.Silver;
@@ -100,6 +104,8 @@
             btnNavAttendance.Cursor = Cursors.Hand;
             btnNavAttendance.Dock = DockStyle.Top;
             btnNavAttendance.FlatAppearance.BorderSize = 0;
+            btnNavAttendance.FlatAppearance.MouseDownBackColor = Color.FromArgb(42, 48, 56);
+            btnNavAttendance.FlatAppearance.MouseOverBackColor = Color.FromArgb(42, 48, 56);
             btnNavAttendance.FlatStyle = FlatStyle.Flat;
             btnNavAttendance.Font = new Font("Segoe UI", 9.75F);
             btnNavAttendance.ForeColor = Color.Silver;
@@ -117,6 +123,8 @@
             btnNavSubcriptions.Cursor = Cursors.Hand;
             btnNavSubcriptions.Dock = DockStyle.Top;
             btnNavSubcriptions.FlatAppearance.BorderSize = 0;
+            btnNavSubcriptions.FlatAppearance.MouseDownBackColor = Color.FromArgb(42, 48, 56);
+            btnNavSubcriptions.FlatAppearance.MouseOverBackColor = Color.FromArgb(42, 48, 56);
             btnNavSubcriptions.FlatStyle = FlatStyle.Flat;
             btnNavSubcriptions.Font = new Font("Segoe UI", 9.75F);
             btnNavSubcriptions.ForeColor = Color.Silver;
@@ -134,6 +142,8 @@
             btnNavPlans.Cursor = Cursors.Hand;
             btnNavPlans.Dock = DockStyle.Top;
             btnNavPlans.FlatAppearance.BorderSize = 0;
+            btnNavPlans.FlatAppearance.MouseDownBackColor = Color.FromArgb(42, 48, 56);
+            btnNavPlans.FlatAppearance.MouseOverBackColor = Color.FromArgb(42, 48, 56);
             btnNavPlans.FlatStyle = FlatStyle.Flat;
             btnNavPlans.Font = new Font("Segoe UI", 9.75F);
             btnNavPlans.ForeColor = Color.Silver;
@@ -151,6 +161,8 @@
             btnNavMembers.Cursor = Cursors.Hand;
             btnNavMembers.Dock = DockStyle.Top;
             btnNavMembers.FlatAppearance.BorderSize = 0;
+            btnNavMembers.FlatAppearance.MouseDownBackColor = Color.FromArgb(42, 48, 56);
+            btnNavMembers.FlatAppearance.MouseOverBackColor = Color.FromArgb(42, 48, 56);
             btnNavMembers.FlatStyle = FlatStyle.Flat;
             btnNavMembers.Font = new Font("Segoe UI", 9.75F);
             btnNavMembers.ForeColor = Color.Silver;
@@ -176,7 +188,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
+            label1.ForeColor = Color.FromArgb(102, 112, 133);
             label1.Location = new Point(65, 31);
             label1.Name = "label1";
             label1.Size = new Size(105, 30);
@@ -185,6 +197,7 @@
             // 
             // panelHeader
             // 
+            panelHeader.BackColor = Color.FromArgb(241, 243, 239);
             panelHeader.Controls.Add(lblHeader);
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(240, 0);
@@ -196,6 +209,7 @@
             // 
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHeader.ForeColor = Color.FromArgb(32, 42, 34);
             lblHeader.Location = new Point(27, 31);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(195, 25);
@@ -204,7 +218,7 @@
             // 
             // panelContent
             // 
-            panelContent.BackColor = SystemColors.ButtonHighlight;
+            panelContent.BackColor = Color.FromArgb(246, 247, 244);
             panelContent.Dock = DockStyle.Fill;
             panelContent.Location = new Point(240, 70);
             panelContent.Name = "panelContent";

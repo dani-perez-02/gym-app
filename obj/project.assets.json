@@ -172,19 +172,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Laboratorio_FE\\.nuget\\packages\\": {}
+    "C:\\Users\\cnpe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Laboratorio_FE\\Downloads\\gym-app\\gym-app.csproj",
+      "projectUniqueName": "E:\\Proyectos AIEP\\GestionGYM\\gym-app\\gym-app.csproj",
       "projectName": "gym-app",
-      "projectPath": "C:\\Users\\Laboratorio_FE\\Downloads\\gym-app\\gym-app.csproj",
-      "packagesPath": "C:\\Users\\Laboratorio_FE\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Laboratorio_FE\\Downloads\\gym-app\\obj\\",
+      "projectPath": "E:\\Proyectos AIEP\\GestionGYM\\gym-app\\gym-app.csproj",
+      "packagesPath": "C:\\Users\\cnpe\\.nuget\\packages\\",
+      "outputPath": "E:\\Proyectos AIEP\\GestionGYM\\gym-app\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Laboratorio_FE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\cnpe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -240,7 +240,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.310/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
