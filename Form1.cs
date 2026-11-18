@@ -36,6 +36,9 @@ namespace gym_app
             btnNavPlans.Click += (s, e) => OpenPlansPanel(btnNavPlans);
             btnNavSubcriptions.Click += (s, e) => OpenSubscriptionsPanel(btnNavSubcriptions);
             btnNavAttendance.Click += (s, e) => OpenAttendancePanel(btnNavAttendance);
+            btnNavPayments.Click += (s, e) => OpenPaymentsPanel(btnNavPayments);
+            btnNavStats.Click += (s, e) => OpenStatsPanel(btnNavStats);
+
         }
 
 
@@ -50,7 +53,7 @@ namespace gym_app
             // Si no hay un boton ya seleccionado, marcamos el boton recibido como el activo
             _activeButton = btn;
             _activeButton.BackColor = ColorSidebarActive;
-            _activeButton.ForeColor= ColorTxtActive;
+            _activeButton.ForeColor = ColorTxtActive;
             _activeButton.Font = new Font("Segoe UI", 10f, FontStyle.Bold);
         }
 
@@ -61,7 +64,7 @@ namespace gym_app
             {
                 _activeForm.Close();
             }
-            _activeForm = childForm; 
+            _activeForm = childForm;
             lblHeader.Text = moduleTitle;
 
             childForm.TopLevel = false;
@@ -88,7 +91,7 @@ namespace gym_app
         {
             HighlightActiveButton(btnNavSubcriptions);
 
-            var view = new Form(); 
+            var view = new Form();
             LoadFormInPanel(view, "Gestion de Suscripciones");
         }
 
@@ -102,9 +105,30 @@ namespace gym_app
         private void OpenAttendancePanel(Button btnNavAttendance)
         {
             HighlightActiveButton(btnNavAttendance);
-            
+
             var view = new Form();
             LoadFormInPanel(view, "Gestion de Asistencia");
+        }
+        private void OpenPaymentsPanel(Button btnNavPayments)
+        {
+            HighlightActiveButton(btnNavPayments);
+
+            var view = new Form();
+            LoadFormInPanel(view, "Gestion de Pagos");
+        }
+
+        private void OpenStatsPanel(Button btnNavStats)
+        {
+            HighlightActiveButton(btnNavStats);
+
+            var view = new Form();
+            LoadFormInPanel(view, "Estadisticas Generales");
+        }
+
+
+        private void GymApp_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

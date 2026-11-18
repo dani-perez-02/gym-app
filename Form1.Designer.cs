@@ -241,6 +241,7 @@
             MinimumSize = new Size(950, 550);
             Name = "GymApp";
             Text = "GymsharkADM";
+            Load += GymApp_Load;
             panelSidebar.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
