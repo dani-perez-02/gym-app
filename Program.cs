@@ -1,3 +1,4 @@
+using System.Globalization;
 using gym_app.Configuration;
 
 namespace gym_app
@@ -24,6 +25,10 @@ namespace gym_app
                 );
                 return;
             }
+            // pal espaniol
+            var cultura = new CultureInfo("es-CL");
+            CultureInfo.DefaultThreadCurrentCulture = cultura;
+            CultureInfo.DefaultThreadCurrentUICulture = cultura;
 
             Application.Run(new GymApp());
         }

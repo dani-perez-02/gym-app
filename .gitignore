@@ -14,3 +14,5 @@ project.fragment.lock.json
 
 .gitingestignore
 digest.txt
+
+Properties/launchSettings.json

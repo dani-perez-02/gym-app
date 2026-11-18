@@ -3,6 +3,8 @@
 
 using System.Drawing;
 using gym_app.Member;
+using gym_app.Membership;
+using gym_app.Plan;
 
 namespace gym_app
 {
@@ -76,11 +78,11 @@ namespace gym_app
         {
             HighlightActiveButton(btnNavMembers);
 
-            var repo = new InMemoryMemberRepository();
+            var repo = new SqlMemberRepository();
             var view = new FrmMembers();
             _ = new MemberPresenter(repo, view);
 
-            LoadFormInPanel(view, "Gestion de Socios");
+            LoadFormInPanel(view, "Gestión de Socios");
 
         }
 
@@ -88,16 +90,26 @@ namespace gym_app
         {
             HighlightActiveButton(btnNavSubcriptions);
 
-            var view = new Form(); 
-            LoadFormInPanel(view, "Gestion de Suscripciones");
+            var service = new MembershipService(
+                new SqlMembershipRepository(),
+                new SqlMemberRepository(),
+                new SqlPlanRepository()
+            );
+            var view = new FrmMemberships();
+            _ = new MembershipPresenter(service, view);
+
+            LoadFormInPanel(view, "Gestión de Suscripciones");
         }
 
         private void OpenPlansPanel(Button btnNavPlans)
         {
             HighlightActiveButton(btnNavPlans);
 
-            var view = new Form();
-            LoadFormInPanel(view, "Gestion de Planes");
+            var repo = new SqlPlanRepository();
+            var view = new FrmPlans();
+            _ = new PlanPresenter(repo, view);
+
+            LoadFormInPanel(view, "Gestión de Planes");
         }
         private void OpenAttendancePanel(Button btnNavAttendance)
         {

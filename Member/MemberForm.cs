@@ -17,7 +17,7 @@ namespace gym_app.Member
         {
             InitializeComponent();
             ConfigureEvents();
-            dtView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ConfigureGrid();
         }
 
         public int MemberId { get; set; }
@@ -98,6 +98,60 @@ namespace gym_app.Member
             var member = (Member)row.DataBoundItem; // el objeto que hay detras
 
             MemberSelectedEvent?.Invoke(this, member);
+        }
+
+        private void ConfigureGrid()
+        {
+            dtView.AutoGenerateColumns = false;
+            dtView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtView.Columns.Clear();
+
+            dtView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Member.MemberId),
+                HeaderText = "ID",
+                Visible = false
+            });
+
+            dtView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Member.Rut),
+                HeaderText = "RUT",
+                FillWeight = 20
+            });
+
+            dtView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Member.Name),
+                HeaderText = "Nombre",
+                FillWeight = 30
+            });
+
+            dtView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Member.Phone),
+                HeaderText = "Teléfono",
+                FillWeight = 18
+            });
+
+            dtView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Member.Email),
+                HeaderText = "Correo",
+                FillWeight = 20
+            });
+
+            dtView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Member.RegisteredAt),
+                HeaderText = "Registro",
+                FillWeight = 12,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "dd/MM/yyyy",
+                    Alignment = DataGridViewContentAlignment.MiddleCenter
+                }
+            });
         }
 
     }
