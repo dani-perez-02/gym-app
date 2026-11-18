@@ -11,3 +11,6 @@ project.fragment.lock.json
 *.suo
 *.userosscache
 *.sln.docstates
+
+.gitingestignore
+digest.txt

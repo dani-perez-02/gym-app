@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using gym_app.Configuration;
+﻿using gym_app.Configuration;
+using Npgsql;
+using NpgsqlTypes;
 
 namespace gym_app.Member
 {
@@ -15,20 +10,34 @@ namespace gym_app.Member
         {
             const string sql = """
                 INSERT INTO Members (Rut, Name, Phone, Email)
-                VALUES (@Rut, @Name, @Phone, @Email);
+                VALUES (@Rut, @Name, @Phone, @Email)
+                RETURNING MemberId, RegisteredAt;
                 """;
 
             using var conn = DatabaseConfig.CreateConnection();
-            using var cmd = new SqlCommand(sql, conn);
+            using var cmd = new NpgsqlCommand(sql, conn);
 
-            cmd.Parameters.Add("@Rut", SqlDbType.VarChar, 12).Value = member.Rut;
-            cmd.Parameters.Add("@Name", SqlDbType.VarChar, 100).Value = member.Name;
-            cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = member.Phone;
-            cmd.Parameters.Add("@Email", SqlDbType.VarChar, 100).Value = member.Email;
+            cmd.Parameters.Add("@Rut", NpgsqlDbType.Varchar, 12).Value = member.Rut;
+            cmd.Parameters.Add("@Name", NpgsqlDbType.Varchar, 100).Value = member.Name;
+            cmd.Parameters.Add("@Phone", NpgsqlDbType.Varchar, 20).Value = member.Phone;
+            cmd.Parameters.Add("@Email", NpgsqlDbType.Varchar, 100).Value = ToDbValue(member.Email);
 
-            conn.Open();
-            cmd.ExecuteNonQuery();
-
+            try
+            {
+                conn.Open();
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    member.MemberId = reader.GetInt32(0);
+                    member.RegisteredAt = reader.GetDateTime(1);
+                    member.IsActive = true;
+                }
+            }
+            catch (PostgresException ex) when (ex.SqlState == PostgresErrorCodes.UniqueViolation)
+            {
+         
+                throw new InvalidOperationException("Ya existe un socio registrado con ese RUT.", ex);
+            }
         }
 
         public void Update(Member member)
@@ -40,27 +49,29 @@ namespace gym_app.Member
                 """;
 
             using var conn = DatabaseConfig.CreateConnection();
-            using var cmd = new SqlCommand(sql, conn);
+            using var cmd = new NpgsqlCommand(sql, conn);
 
-            cmd.Parameters.Add("@MemberId", SqlDbType.Int).Value = member.MemberId;
-            cmd.Parameters.Add("@Name", SqlDbType.VarChar, 100).Value = member.Name;
-            cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = member.Phone;
-            cmd.Parameters.Add("@Email", SqlDbType.VarChar, 100).Value = member.Email;
+            cmd.Parameters.Add("@MemberId", NpgsqlDbType.Integer).Value = member.MemberId;
+            cmd.Parameters.Add("@Name", NpgsqlDbType.Varchar, 100).Value = member.Name;
+            cmd.Parameters.Add("@Phone", NpgsqlDbType.Varchar, 20).Value = member.Phone;
+            cmd.Parameters.Add("@Email", NpgsqlDbType.Varchar, 100).Value = ToDbValue(member.Email);
 
             conn.Open();
             cmd.ExecuteNonQuery();
         }
+
         public void DeactivateById(int memberId)
         {
             const string sql = """
-                UPDATE Members SET IsActive = 0
+                UPDATE Members
+                SET IsActive = FALSE
                 WHERE MemberId = @MemberId;
                 """;
 
             using var conn = DatabaseConfig.CreateConnection();
-            using var cmd = new SqlCommand(sql, conn);
+            using var cmd = new NpgsqlCommand(sql, conn);
 
-            cmd.Parameters.Add("@MemberId", SqlDbType.Int).Value = memberId;
+            cmd.Parameters.Add("@MemberId", NpgsqlDbType.Integer).Value = memberId;
 
             conn.Open();
             cmd.ExecuteNonQuery();
@@ -71,13 +82,14 @@ namespace gym_app.Member
             const string sql = """
                 SELECT MemberId, Rut, Name, Phone, Email, RegisteredAt, IsActive
                 FROM Members
-                WHERE IsActive = 1;
+                WHERE IsActive = TRUE
+                ORDER BY Name;
                 """;
 
             var members = new List<Member>();
 
             using var conn = DatabaseConfig.CreateConnection();
-            using var cmd = new SqlCommand(sql, conn);
+            using var cmd = new NpgsqlCommand(sql, conn);
 
             conn.Open();
             using var reader = cmd.ExecuteReader();
@@ -88,18 +100,19 @@ namespace gym_app.Member
             return members;
         }
 
-        public Member GetMemberByRut(string rut)
+        public Member? GetMemberByRut(string rut)
         {
             const string sql = """
-                SELECT TOP 1 MemberId, Rut, Name, Phone, Email, RegisteredAt, IsActive
+                SELECT MemberId, Rut, Name, Phone, Email, RegisteredAt, IsActive
                 FROM Members
-                WHERE Rut = @Rut AND IsActive = 1;
+                WHERE Rut = @Rut AND IsActive = TRUE
+                LIMIT 1;
                 """;
 
             using var conn = DatabaseConfig.CreateConnection();
-            using var cmd = new SqlCommand(sql, conn);
+            using var cmd = new NpgsqlCommand(sql, conn);
 
-            cmd.Parameters.Add("@Rut", SqlDbType.VarChar, 12).Value = rut;
+            cmd.Parameters.Add("@Rut", NpgsqlDbType.Varchar, 12).Value = rut;
 
             conn.Open();
             using var reader = cmd.ExecuteReader();
@@ -107,20 +120,25 @@ namespace gym_app.Member
             return reader.Read() ? MapReaderToMember(reader) : null;
         }
 
-        private static Member MapReaderToMember(SqlDataReader reader)
+        // para convertir un string vacío o null en DBNull, pg no acepta null
+        private static object ToDbValue(string? value)
+            => string.IsNullOrWhiteSpace(value) ? DBNull.Value : value;
+
+        private static Member MapReaderToMember(NpgsqlDataReader reader)
         {
             return new Member
             {
-                MemberId = Convert.ToInt32(reader["MemberId"]),
-                Rut = reader["Rut"].ToString(),
-                Name = reader["Name"].ToString(),
-                Phone = reader["Phone"].ToString(),
-                Email = reader["Email"].ToString(),
-                RegisteredAt = Convert.ToDateTime(reader["RegisteredAt"]),
-                IsActive = Convert.ToBoolean(reader["IsActive"])
+                MemberId = reader.GetInt32(reader.GetOrdinal("MemberId")),
+                Rut = reader.GetString(reader.GetOrdinal("Rut")),
+                Name = reader.GetString(reader.GetOrdinal("Name")),
+                Phone = reader.GetString(reader.GetOrdinal("Phone")),
+                // email pueed ser null por ahora
+                Email = reader.IsDBNull(reader.GetOrdinal("Email"))
+                    ? string.Empty
+                    : reader.GetString(reader.GetOrdinal("Email")),
+                RegisteredAt = reader.GetDateTime(reader.GetOrdinal("RegisteredAt")),
+                IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
             };
         }
-
-
     }
 }
