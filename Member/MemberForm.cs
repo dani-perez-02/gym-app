@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using gym_app.Configuration;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace gym_app.Member
@@ -18,6 +19,9 @@ namespace gym_app.Member
             InitializeComponent();
             ConfigureEvents();
             ConfigureGrid();
+
+            btnSave.Text = "Guardar";
+            btnDisable.Enabled = false;
         }
 
         public int MemberId { get; set; }
@@ -65,6 +69,8 @@ namespace gym_app.Member
             txtPhone.Clear();
 
             txtRUT.Focus();
+            btnSave.Text = "Guardar";
+            btnDisable.Enabled = false;
         }
 
         public void DisplayMembers(IEnumerable<Member> members)
@@ -74,6 +80,9 @@ namespace gym_app.Member
 
         public void ShowMember(Member member)
         {
+            btnSave.Text = "Actualizar";
+            btnDisable.Enabled = true;
+
             MemberId = member.MemberId;
             MemberRut = member.Rut;
             MemberName = member.Name;
@@ -152,6 +161,8 @@ namespace gym_app.Member
                     Alignment = DataGridViewContentAlignment.MiddleCenter
                 }
             });
+
+            GridStyler.Apply(dtView);
         }
 
     }

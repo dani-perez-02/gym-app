@@ -1,4 +1,6 @@
-﻿namespace gym_app.Membership
+﻿using gym_app.Configuration;
+
+namespace gym_app.Membership
 {
     internal partial class FrmMemberships : Form, IMembershipView
     {
@@ -108,6 +110,7 @@
                     Alignment = DataGridViewContentAlignment.MiddleCenter
                 }
             });
+            GridStyler.Apply(dtView);
         }
 
         private void ConfigureEvents()

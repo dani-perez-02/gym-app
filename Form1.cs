@@ -2,6 +2,7 @@
 
 
 using System.Drawing;
+using gym_app.Attendance;
 using gym_app.Member;
 using gym_app.Membership;
 using gym_app.Plan;
@@ -114,9 +115,16 @@ namespace gym_app
         private void OpenAttendancePanel(Button btnNavAttendance)
         {
             HighlightActiveButton(btnNavAttendance);
-            
-            var view = new Form();
-            LoadFormInPanel(view, "Gestion de Asistencia");
+
+            var service = new AttendanceService(
+                new SqlAttendanceRepository(),
+                new SqlMemberRepository(),
+                new SqlMembershipRepository()
+            );
+            var view = new FrmAttendance();
+            _ = new AttendancePresenter(service, view);
+
+            LoadFormInPanel(view, "Control de Asistencia");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Xml.Linq;
+using gym_app.Configuration;
 
 namespace gym_app.Plan
 {
@@ -10,6 +11,9 @@ namespace gym_app.Plan
             InitializeComponent();
             ConfigureEvents();
             ConfigureGrid();
+
+            btnSave.Text = "Guardar";
+            btnDisable.Enabled = false;
         }
 
         public int PlanId { get; set; }
@@ -53,6 +57,8 @@ namespace gym_app.Plan
             txtPrice.Clear();
 
             txtName.Focus();
+            btnSave.Text = "Guardar";
+            btnDisable.Enabled = false;
         }
 
         public void DisplayPlans(IEnumerable<Plan> plans)
@@ -62,6 +68,9 @@ namespace gym_app.Plan
 
         public void ShowPlan(Plan plan)
         {
+            btnSave.Text = "Actualizar";
+            btnDisable.Enabled = true;
+
             PlanId = plan.PlanId;
             PlanName = plan.Name;
             PlanDuration = plan.DurationInDays.ToString();
@@ -131,6 +140,7 @@ namespace gym_app.Plan
                     Alignment = DataGridViewContentAlignment.MiddleRight
                 }
             });
+            GridStyler.Apply(dtView);
         }
     }
 
