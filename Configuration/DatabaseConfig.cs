@@ -12,16 +12,23 @@ namespace gym_app.Configuration
 {
     internal class DatabaseConfig
     {
-        private const string EnvVarName = "GYM_DB_CONNECTION";
+        // private const string EnvVarName = "GYM_DB_CONNECTION";
+        private const string EnvVarName = "Host=ep-muddy-truth-b628am8q-pooler.c-2.sa-east-1.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=npg_UlyemwEcY20J;SSL Mode=Require;Timeout=30";
+
+     //   private static string GetConnectionString()
+    //    {
+     //       var connStr = Environment.GetEnvironmentVariable(EnvVarName);
+     //       if (string.IsNullOrWhiteSpace(connStr))
+     //           throw new InvalidOperationException(
+     //               $"No se encontró la variable de entorno '{EnvVarName}'.");
+     //
+     //       return connStr;
+     //   }
 
         private static string GetConnectionString()
         {
-            var connStr = Environment.GetEnvironmentVariable(EnvVarName);
-            if (string.IsNullOrWhiteSpace(connStr))
-                throw new InvalidOperationException(
-                    $"No se encontró la variable de entorno '{EnvVarName}'.");
-
-            return connStr;
+   
+            return EnvVarName;
         }
 
 
