@@ -50,6 +50,24 @@ namespace gym_app.Member
                 return;
             }
 
+            //VALIDACIONES DEL RUT Y NUMERO DE TELEFONO
+            if (!MemberValidator.ValidateRut(_view.MemberRut))
+            {
+                _view.ShowMessage("RUT ingresado es invalido", true);
+                return;
+            }
+            if (!MemberValidator.ValidatePhone(_view.MemberPhone))
+            {
+                _view.ShowMessage("Telefono ingresado es invalido", true);
+                return;
+            }
+            if (!MemberValidator.ValidateEmail(_view.MemberEmail))
+            {
+                _view.ShowMessage("email ingresado invalido", true);
+                return;
+            }
+
+            //CREACION DEL OBJETO   
             var member = new Member
             {
                 MemberId = _view.MemberId,

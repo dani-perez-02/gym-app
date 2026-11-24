@@ -39,6 +39,8 @@ namespace gym_app
             btnNavPlans.Click += (s, e) => OpenPlansPanel(btnNavPlans);
             btnNavSubcriptions.Click += (s, e) => OpenSubscriptionsPanel(btnNavSubcriptions);
             btnNavAttendance.Click += (s, e) => OpenAttendancePanel(btnNavAttendance);
+            btnNavPayments.Click += (s, e) => OpenPaymentsPanel(btnNavPayments);
+            btnNavStats.Click += (s, e) => OpenStatsPanel(btnNavStats);
         }
 
 
@@ -125,6 +127,34 @@ namespace gym_app
             _ = new AttendancePresenter(service, view);
 
             LoadFormInPanel(view, "Control de Asistencia");
+        }
+        private void OpenPaymentsPanel(Button btnNavPayments)
+        {
+            HighlightActiveButton(btnNavAttendance);
+
+            var service = new AttendanceService(
+                new SqlAttendanceRepository(),
+                new SqlMemberRepository(),
+                new SqlMembershipRepository()
+            );
+            var view = new FrmAttendance();
+            _ = new AttendancePresenter(service, view);
+
+            LoadFormInPanel(view, "Control de Pagos");
+        }
+        private void OpenStatsPanel(Button btnNavStats)
+        {
+            HighlightActiveButton(btnNavAttendance);
+
+            var service = new AttendanceService(
+                new SqlAttendanceRepository(),
+                new SqlMemberRepository(),
+                new SqlMembershipRepository()
+            );
+            var view = new FrmAttendance();
+            _ = new AttendancePresenter(service, view);
+
+            LoadFormInPanel(view, "Control de Pagos");
         }
     }
 }
