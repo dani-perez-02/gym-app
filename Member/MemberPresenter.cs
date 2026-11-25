@@ -66,12 +66,13 @@ namespace gym_app.Member
                 _view.ShowMessage("email ingresado invalido", true);
                 return;
             }
+            string Standardized_RUT = StandardizedRUT(_view.MemberRut);
 
             //CREACION DEL OBJETO   
             var member = new Member
             {
                 MemberId = _view.MemberId,
-                Rut = _view.MemberRut,
+                Rut = Standardized_RUT,
                 Name = _view.MemberName,
                 Phone = _view.MemberPhone,
                 Email = _view.MemberEmail,
@@ -117,7 +118,20 @@ namespace gym_app.Member
                 _view.ShowMessage($"Error al desactivar: {ex.Message}", true);
             }
         }
+        private static string StandardizedRUT(string rut)
+        {
+            string rutNormalizado = rut.Trim().Replace(".", "").Replace(" ", "").Replace("-", "");
 
+            int indice = 0;
+            for (int i = 0; i < rutNormalizado.Length; i++)
+            {
+                indice = i;
+            }
+            string body = rutNormalizado.Substring(0, indice);
+            string dv = rutNormalizado.Substring(indice);
+            return body + "-" + dv;
+
+        }
 
     }
 }
