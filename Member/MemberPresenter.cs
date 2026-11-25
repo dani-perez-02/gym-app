@@ -118,7 +118,7 @@ namespace gym_app.Member
                 _view.ShowMessage($"Error al desactivar: {ex.Message}", true);
             }
         }
-        private static string StandardizedRUT(string rut)
+        private string StandardizedRUT(string rut)
         {
             string rutNormalizado = rut.Trim().Replace(".", "").Replace(" ", "").Replace("-", "");
 
