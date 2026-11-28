@@ -43,6 +43,7 @@
             btnClear = new Button();
             btnSave = new Button();
             btnDisable = new Button();
+            cbFiltro = new ComboBox();
             panelGridContainer = new Panel();
             dtView = new DataGridView();
             panelCard.SuspendLayout();
@@ -77,6 +78,7 @@
             flowInputs.Controls.Add(txtEmail);
             flowInputs.Controls.Add(panelRowButtons);
             flowInputs.Controls.Add(btnDisable);
+            flowInputs.Controls.Add(cbFiltro);
             flowInputs.Dock = DockStyle.Fill;
             flowInputs.FlowDirection = FlowDirection.TopDown;
             flowInputs.Location = new Point(16, 16);
@@ -235,6 +237,17 @@
             btnDisable.Text = "Desactivar Socio";
             btnDisable.UseVisualStyleBackColor = false;
             // 
+            // cbFiltro
+            // 
+            cbFiltro.BackColor = Color.RoyalBlue;
+            cbFiltro.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbFiltro.ForeColor = SystemColors.HighlightText;
+            cbFiltro.FormattingEnabled = true;
+            cbFiltro.Location = new Point(3, 357);
+            cbFiltro.Name = "cbFiltro";
+            cbFiltro.Size = new Size(267, 23);
+            cbFiltro.TabIndex = 11;
+            // 
             // panelGridContainer
             // 
             panelGridContainer.BackColor = Color.FromArgb(246, 247, 244);
@@ -307,5 +320,6 @@
         private Button btnClear;
         private Button btnDisable;
         private DataGridView dtView;
+        private ComboBox cbFiltro;
     }
 }

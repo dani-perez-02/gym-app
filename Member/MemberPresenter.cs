@@ -21,16 +21,21 @@ namespace gym_app.Member
             _view.DisableEvent += OnDisable;
             _view.ClearEvent += (s, e) => _view.ClearInputs();
             _view.MemberSelectedEvent += (s, member) => _view.ShowMember(member);
+            _view.FilterChangeEvent += OnFilterChange;
 
             LoadAllMembers(); //carga inicial de datos
         }
 
+        private void OnFilterChange(object? sender, EventArgs e)
+        {
+            LoadAllMembers();
+        }
 
         private void LoadAllMembers()
         {
             try
             {
-                var members = _repository.GetAll();
+                var members = _repository.GetAll(_view.SelectFilter);
                 _view.DisplayMembers(members);
             }
             catch (Exception ex)

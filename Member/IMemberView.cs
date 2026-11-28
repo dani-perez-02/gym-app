@@ -14,8 +14,8 @@ namespace gym_app.Member
         string MemberName { get; set; }
         string MemberRut { get; set; }
         string MemberPhone { get; set; }
-
         string MemberEmail { get; set; }
+        MemberFilter.MembersFilter SelectFilter { get;}
 
 
         // eventos -> que "hace" el usuario en esta pantalla?
@@ -23,12 +23,12 @@ namespace gym_app.Member
         event EventHandler DisableEvent;
         event EventHandler ClearEvent;
         event EventHandler<Member> MemberSelectedEvent;
+        event EventHandler FilterChangeEvent;
 
         // metodos -> que le pido a la pantalla que haga o muestre?
         void DisplayMembers(IEnumerable<Member> members);
         void ShowMember(Member member);
         void ShowMessage(string msg, bool isError = false);
-
         void ClearInputs();
     }
 }

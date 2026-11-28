@@ -17,6 +17,7 @@ namespace gym_app.Member
         public FrmMembers()
         {
             InitializeComponent();
+            ConfigureFilter();
             ConfigureEvents();
             ConfigureGrid();
 
@@ -45,12 +46,33 @@ namespace gym_app.Member
             get => txtEmail.Text;
             set => txtEmail.Text = value;
         }
+        public MemberFilter.MembersFilter SelectFilter
+        {
+            get
+            {
+                if (cbFiltro.SelectedItem is MemberFilter.MembersFilter filter)
+                {
+                    return filter;
+                }
+                else
+                {
+                    return MemberFilter.MembersFilter.Todos;
+                }
+            }
+        }
 
         public event EventHandler SaveEvent;
         public event EventHandler DisableEvent;
         public event EventHandler ClearEvent;
         public event EventHandler<Member> MemberSelectedEvent;
+        
+        private void ConfigureFilter()
+        {
+            cbFiltro.DataSource = Enum.GetValues<MemberFilter.MembersFilter>();
+            cbFiltro.SelectedIndex = 0;
 
+        }
+        
 
         private void ConfigureEvents()
         {
@@ -58,7 +80,11 @@ namespace gym_app.Member
             btnDisable.Click += (s, e) => DisableEvent?.Invoke(this, EventArgs.Empty);
             btnClear.Click += (s, e) => ClearEvent?.Invoke(this, EventArgs.Empty);
             dtView.CellClick += dtView_CellClick;
+            dtView.CellFormatting += dtView_CellFormatting;
+            cbFiltro.SelectedIndexChanged += (s,e) => FilterChangeEvent?.Invoke(this, EventArgs.Empty);
         }
+
+        public event EventHandler? FilterChangeEvent;
 
         public void ClearInputs()
         {
@@ -109,6 +135,20 @@ namespace gym_app.Member
             MemberSelectedEvent?.Invoke(this, member);
         }
 
+        private void dtView_CellFormatting(object? sender , DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.Value == null) return;
+
+            if (dtView.Columns[e.ColumnIndex].DataPropertyName == nameof(Member.IsActive))
+            {
+                if (e.Value is bool isActive)
+                {
+                    e.Value = isActive ? "Activo" : "Inactivo";
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
         private void ConfigureGrid()
         {
             dtView.AutoGenerateColumns = false;
@@ -126,35 +166,42 @@ namespace gym_app.Member
             {
                 DataPropertyName = nameof(Member.Rut),
                 HeaderText = "RUT",
-                FillWeight = 20
+                FillWeight = 17
             });
 
             dtView.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = nameof(Member.Name),
                 HeaderText = "Nombre",
-                FillWeight = 30
+                FillWeight = 24
             });
 
             dtView.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = nameof(Member.Phone),
                 HeaderText = "Teléfono",
-                FillWeight = 18
+                FillWeight = 15
+            });
+
+            dtView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Member.IsActive),
+                HeaderText = "Estado",
+                FillWeight = 16
             });
 
             dtView.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = nameof(Member.Email),
                 HeaderText = "Correo",
-                FillWeight = 20
+                FillWeight = 18
             });
 
             dtView.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = nameof(Member.RegisteredAt),
                 HeaderText = "Registro",
-                FillWeight = 12,
+                FillWeight = 10,
                 DefaultCellStyle = new DataGridViewCellStyle
                 {
                     Format = "dd/MM/yyyy",

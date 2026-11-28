@@ -26,7 +26,7 @@ namespace gym_app.Membership
         }
 
         public IEnumerable<Member.Member> GetActiveMembers()
-            => _memberRepo.GetAll();
+            => _memberRepo.GetAll(MemberFilter.MembersFilter.Activo);
 
         public IEnumerable<Plan.Plan> GetActivePlans()
             => _planRepo.GetAll();

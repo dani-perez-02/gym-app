@@ -12,7 +12,7 @@ namespace gym_app.Member
         void Update(Member member);
 
         void DeactivateById(int memberId);
-        IEnumerable<Member> GetAll();
+        IEnumerable<Member> GetAll(MemberFilter.MembersFilter filtro);
 
         Member GetMemberByRut(string rut);
     }

@@ -77,14 +77,22 @@ namespace gym_app.Member
             cmd.ExecuteNonQuery();
         }
 
-        public IEnumerable<Member> GetAll()
+        public IEnumerable<Member> GetAll(MemberFilter.MembersFilter filtro)
         {
-            const string sql = """
-                SELECT MemberId, Rut, Name, Phone, Email, RegisteredAt, IsActive
-                FROM Members
-                WHERE IsActive = TRUE
-                ORDER BY Name;
-                """;
+
+            string whereClause = filtro switch
+            {
+                MemberFilter.MembersFilter.Activo => "WHERE IsActive = TRUE",
+                MemberFilter.MembersFilter.Inactivo => "WHERE IsActive = FALSE",
+                _ => ""
+            };
+
+            string sql = $"""        
+                        SELECT MemberId, Rut, Name, Phone, Email, RegisteredAt, IsActive
+                        FROM Members        
+                        {whereClause}
+                        ORDER BY Name;
+                        """;
 
             var members = new List<Member>();
 
@@ -99,6 +107,8 @@ namespace gym_app.Member
 
             return members;
         }
+
+
 
         public Member? GetMemberByRut(string rut)
         {
